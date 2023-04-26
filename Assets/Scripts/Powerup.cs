@@ -26,6 +26,7 @@ public class Powerup : MonoBehaviour
         {
             transform.LookAt(player.transform);
             transform.Rotate(Vector3.right * 90);
+            transform.Rotate(Vector3.up * 90);
 
             distance = (player.transform.position - transform.position).magnitude;
 
@@ -48,21 +49,21 @@ public class Powerup : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             gameObject.GetComponent<Renderer>().enabled = false;
+            
             StartCoroutine(UsePowerup());
         }
     }
 
     protected IEnumerator UsePowerup()
     {
-        // turn on powerup
-        player.GetComponent<Renderer>().material = player.GetComponent<PlayerController>().powerupMaterial;
+        player.GetComponent<PlayerController>().shield.SetActive(true);
         gameManager.hasPowerup = true;
 
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(2);
 
         // back to normal
         gameManager.hasPowerup = false;
-        player.GetComponent<Renderer>().material = player.GetComponent<PlayerController>().defaultMaterial;
+        player.GetComponent<PlayerController>().shield.SetActive(false);
         Destroy(gameObject);
     }
 }

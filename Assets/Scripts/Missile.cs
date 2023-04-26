@@ -29,6 +29,7 @@ public class Missile : MonoBehaviour
         {
             transform.LookAt(player.transform);
             transform.Rotate(Vector3.right * 90);
+            transform.Rotate(Vector3.up * 90);
 
             distance = (player.transform.position - transform.position).magnitude;
 
@@ -40,7 +41,7 @@ public class Missile : MonoBehaviour
 
             rb.velocity = transform.rotation * Vector3.up * speed;
 
-            float detonateRadius = 3;
+            float detonateRadius = 4;
 
             if (!isDetonated && distance < detonateRadius)
             {

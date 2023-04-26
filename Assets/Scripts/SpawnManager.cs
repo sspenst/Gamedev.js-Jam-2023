@@ -34,7 +34,7 @@ public class SpawnManager : MonoBehaviour
             new Vector3(sign * xSpawn, Random.Range(-ySpawn, ySpawn)) :
             new Vector3(Random.Range(-xSpawn, xSpawn), sign * ySpawn);
 
-        GameObject prefab = Random.Range(0, 10) == 0 ? powerupPrefab : missilePrefab;
+        GameObject prefab = Random.Range(0, 10) == 0 && !gameManager.hasPowerup ? powerupPrefab : missilePrefab;
 
         Instantiate(prefab, position, Quaternion.identity);
 

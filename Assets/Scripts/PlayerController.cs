@@ -3,9 +3,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public Material defaultMaterial;
-    public Material powerupMaterial;
     public TextMeshProUGUI scoreText;
+    public GameObject shield;
 
     [SerializeField] private float speed;
     [SerializeField] private float jumpVelocity;
@@ -21,6 +20,9 @@ public class PlayerController : MonoBehaviour
         speed = 10.0f;
 
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        shield = GameObject.Find("Shield");
+        shield.SetActive(false);
 
         // set bounds on start (doesn't account for window resize)
         Camera mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
