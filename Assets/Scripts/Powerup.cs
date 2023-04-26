@@ -59,7 +59,7 @@ public class Powerup : MonoBehaviour
         player.GetComponent<PlayerController>().shield.SetActive(true);
         gameManager.hasPowerup = true;
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(5);
 
         // back to normal
         gameManager.hasPowerup = false;
